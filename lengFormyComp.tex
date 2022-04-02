@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Lenguajes Formales y Computabilidad\linebreak Definiciones, lemas y teoremas}
+\author{Valentino Beorda}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Funciones $\Sigma$-mixtas}
+
+\begin{flushleft}
+
+Una función es un conjunto $f$ de paers ordenados con la siguiente propiedad:
+\begin{itemize}
+\item Si $(x, y) \in f$ y $(x, z) \in f$, entonces  $y=z$.
+\end{itemize}
+ 
+
+$D_f$: dominio de $f$ = $\{x : (x, y) \in f$ para algún $y\}$\linebreak
+$I_f$: imagen de $f$ = $\{y : (x, y) \in f$ para algún $x\}$\linebreak
+
+\textbf{Igualdad de funciones:} Sean $f$ y $g$ funciones. Entonces $f = g$ sii $D_f = D_g$ y para cada $x \in D_f$ se tiene que $f(x) = g(x)$.\linebreak
+
+\textbf{Definición:}
+Sea $\Sigma$ un alfabeto finito. Dada una función $f$, diremos que $f$ es $\Sigma$-mixta si cumple las siguientes propiedades:
+\begin{enumerate}
+\item Existen $n$, $m$ $\geq$ 0, tales que $D_f$ $\subseteq \omega^n \times \Sigma^{*m}$
+\item $I_f \subseteq \omega$ ó $I_f \subseteq \Sigma^*$.
+\end{enumerate}
+
+
+\textbf{Lemma:} Supongamos que $\Sigma \subseteq \Gamma$ son alfabetos finitos. Entonces si $f$ es una función $\Sigma$-mixta, $f$ es $Gamma$-mixta\linebreak
+
+\textbf {Funciones Útiles:}\linebreak
+
+Sucesor: $Suc$: $\omega \rightarrow \omega$\linebreak
+\hspace*{14ex} $n \mapsto n+1$\linebreak
+
+Predecesor: $Pred: $ \textbf{N} $\rightarrow \omega$\linebreak
+\hspace*{20ex} $n \mapsto n-1$\linebreak
+
+Derecha sub a: $d_a: \Sigma^* \rightarrow \Sigma^*$\linebreak
+\hspace*{21ex} $\alpha \mapsto \alpha a$\linebreak
+
+Proyecciones: \linebreak
+para un $i$ tal que $1 \geq i \geq n$,\linebreak
+$p_i^{n, m}: \omega^n \times \sigma^{*m} \rightarrow \omega$\linebreak
+\hspace*{8ex} $(\overrightarrow{x}, \overrightarrow{\alpha}) \mapsto x_i$\linebreak
+Para un $i$ tal que $n \geq i \geq n+m$, \linebreak
+$p_i^{n, m}: \omega^n \times \sigma^{*m} \rightarrow \omega$\linebreak
+\hspace*{8ex} $(\overrightarrow{x}, \overrightarrow{\alpha}) \mapsto \alpha_{i-n}$\linebreak
+
+Constantes: $C_k^{n, m}: \omega^n \times \Sigma^{*m} \rightarrow \omega$ \hspace*{13ex}$C_\alpha^{n, m}: \omega^n \times \Sigma^{*m} \rightarrow
+\Sigma^*$\linebreak
+\hspace*{22ex} $(\overrightarrow{x}, \overrightarrow{\alpha}) \mapsto k $ \hspace*{22ex} $(\overrightarrow{x}, \overrightarrow{\alpha}) \mapsto \alpha $\linebreak\linebreak
+
+\textbf{Tipo de una función mixta:} Dada $f$ una función $\Sigma$-mixta, si $n, m \in \omega$ son tales que $D_f \subseteq \omega^n \times \Sigma^{*m}$ y además $I_f \subseteq \omega$, diremos $f$ es una función de tipo $(n, m, \#)$; si $I_f \subseteq \Sigma^*$, entonces $f$ es de tipo $(n, m, *)$. \linebreak
+
+\textbf{Predicados $\Sigma$-mixtos:} Un predicado $\Sigma$ mixto es una función $f$ la cual es $\Sigma$-mixta y además cumple $I_f \subseteq \{0,1\}$.\linebreak
+
+\textbf{Función identidad:} Dado un conjunto A, a la función:
+\begin{center}
+$A \rightarrow A$\linebreak
+$a \mapsto a$
+\end{center}
+La denotaremos con $Id_A$ y la llamaremos la función identidad sobre A. Notar que $Id_a = \{(a, a): a \in A\}$ \linebreak.
+
+\textbf{Composición de funciones:} Dadas funciones $f$ y $g$ definamos la función $f \circ g$ de la siguiente manera:
+\begin{itemize}
+\item $D_{f \circ g} = \{ e \in D_g : g(e) \in D_f\}$
+\item $f \circ g(e) = f(g(e))$
+\end{itemize}
+
+Notar que $f \circ g = \{(u, v): \exists$ z tal que $ (u, z) \in g$ y $(z, v) \in f\}.$\linebreak
+
+\textbf{Lemma:} $f \circ g \neq \emptyset$ si y solo si $I_g \cap D_f \neq \emptyset.$\linebreak
+
+\textbf{Lemma:} Si $I_g \in D_f \Rightarrow D_{f \circ g} = D_g$ \linebreak
+
+\textbf{Funciones de la forma $[f_1,...,f_n]$}: Dadas funciones $f_1, ..., f_n$ con $ n \geq 2$, definimos la función $[f_1, ..., f_n]$ de la siguiente forma:
+\begin{itemize}
+\item $D_{[f1, ..., fn]} = D_{f_1} \cap ... \cap D_{f_n}$
+\item $[f_1, ..., f_n](e) = (f_1(e), ..., f_n(e))$
+\end{itemize}
+Notar que $I_{[f_1, ..., f_n]} \in I_{f_1} \times ... \times I_{f_n}.$\linebreak
+
+\textbf{Función inyectiva:} Una función $f$ es inyectiva cuando \textbf{no} se da que $f(a) = f(b)$ \forall $a, b \in D_f$ con $a \neq b$.\linebreak
+\textbf{Función suryectiva:} Una función $f: A \rightarrow B$ es suryectiva cuando $I_f = B$.\linebreak
+\textbf{Función biyectiva:} Una función $f$ es biyectiva, cuando $f$ es inyectiva y suryectiva.\linebreak
+\textbf{Función inversa:} Si $f$ es biyectiva, entonces se puede definir $f^{-1}: B \rightarrow A$, de la siguiente manera:
+\begin{center}
+    $f^{-1}(b) = $ único $a \in A$ tal que $f(a) = b$
+\end{center}
+La función $f^{-1}$ será llamada inversa de $f$. Notar que $f \circ f^{-1} = Id_B$ y $f^{-1} \circ f = Id_A$.\linebreak
+
+\textbf{Lemma:} Supongamos $f: A \rightarrow B$ y $g: B \rightarrow A$ son tales que $f \circ g = Id_B$ y $g \circ f = Id_A$. Entonces $f$ y $g$ son biyectivas, $f^{-1} = g$ y $g^{-1} = f$.\linebreak
+
+\textbf{Conjuntos $\Sigma$-mixtos:} Un conjunto $S$ es llamado $\Sigma$-mixto si existen $n, m \in \omega$ tales que $S \subseteq \omega^n \times \Sigma^{*m}$.\linebreak
+
+\textbf{Tipo de un conjunto $\Sigma$-mixto:} Dado un conjunto $\Sigma$-mixto $S$, si $n, m \in \omega$ son tales que $S \subseteq \omega^n \times \Sigma^{*m}$, entonces diremos que $S$ es de tipo $(n, m)$.
+
+
+
+\end{flushleft}
+\end{document}

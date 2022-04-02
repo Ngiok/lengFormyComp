@@ -17,7 +17,6 @@ Una función es un conjunto $f$ de paers ordenados con la siguiente propiedad:
 \begin{itemize}
 \item Si $(x, y) \in f$ y $(x, z) \in f$, entonces  $y=z$.
 \end{itemize}
- 
 
 $D_f$: dominio de $f$ = $\{x : (x, y) \in f$ para algún $y\}$\linebreak
 $I_f$: imagen de $f$ = $\{y : (x, y) \in f$ para algún $x\}$\linebreak
@@ -30,7 +29,6 @@ Sea $\Sigma$ un alfabeto finito. Dada una función $f$, diremos que $f$ es $\Sig
 \item Existen $n$, $m$ $\geq$ 0, tales que $D_f$ $\subseteq \omega^n \times \Sigma^{*m}$
 \item $I_f \subseteq \omega$ ó $I_f \subseteq \Sigma^*$.
 \end{enumerate}
-
 
 \textbf{Lemma:} Supongamos que $\Sigma \subseteq \Gamma$ son alfabetos finitos. Entonces si $f$ es una función $\Sigma$-mixta, $f$ es $Gamma$-mixta\linebreak
 
@@ -87,7 +85,7 @@ Notar que $f \circ g = \{(u, v): \exists$ z tal que $ (u, z) \in g$ y $(z, v) \i
 \end{itemize}
 Notar que $I_{[f_1, ..., f_n]} \in I_{f_1} \times ... \times I_{f_n}.$\linebreak
 
-\textbf{Función inyectiva:} Una función $f$ es inyectiva cuando \textbf{no} se da que $f(a) = f(b)$ \forall $a, b \in D_f$ con $a \neq b$.\linebreak
+\textbf{Función inyectiva:} Una función $f$ es inyectiva cuando \textbf{no} se da que $f(a) = f(b)$ $\forall$ $a, b \in D_f$ con $a \neq b$.\linebreak
 \textbf{Función suryectiva:} Una función $f: A \rightarrow B$ es suryectiva cuando $I_f = B$.\linebreak
 \textbf{Función biyectiva:} Una función $f$ es biyectiva, cuando $f$ es inyectiva y suryectiva.\linebreak
 \textbf{Función inversa:} Si $f$ es biyectiva, entonces se puede definir $f^{-1}: B \rightarrow A$, de la siguiente manera:
@@ -100,9 +98,23 @@ La función $f^{-1}$ será llamada inversa de $f$. Notar que $f \circ f^{-1} = I
 
 \textbf{Conjuntos $\Sigma$-mixtos:} Un conjunto $S$ es llamado $\Sigma$-mixto si existen $n, m \in \omega$ tales que $S \subseteq \omega^n \times \Sigma^{*m}$.\linebreak
 
-\textbf{Tipo de un conjunto $\Sigma$-mixto:} Dado un conjunto $\Sigma$-mixto $S$, si $n, m \in \omega$ son tales que $S \subseteq \omega^n \times \Sigma^{*m}$, entonces diremos que $S$ es de tipo $(n, m)$.
+\textbf{Tipo de un conjunto $\Sigma$-mixto:} Dado un conjunto $\Sigma$-mixto $S$, si $n, m \in \omega$ son tales que $S \subseteq \omega^n \times \Sigma^{*m}$, entonces diremos que $S$ es de tipo $(n, m)$.\linebreak
 
+\textbf{Notación Lambda:} \linebreak
 
+Para que una expresión $E$ pueda ser utilizada en la notación lambda, deberá cumplir alguna de estas 2 propiedades:
+\begin{enumerate}
+    \item Los valores que asuma $E$ deberán ser elementos de $\omega$
+    \item Los valores que asuma $E$ deberán ser elementos de $\Sigma^*$.
+\end{enumerate}
+
+\textbf{Definión de $\lambda_{x_1, ..., x_n, \alpha_1, ..., \alpha_m}[E]$:} Sea $x_1, ..., x_n$ una lista de variables todas distintas tal que las variables numéricas que ocurren en $E$ estén todas contenidas en $x_1, ..., x_n$ y que las variables alfabéticas que ocurren en $E$, estén todas contenidas en $\alpha_1, ..., \alpha_m$. Entonces $\lambda_{x_1, ..., x_n, \alpha_1, ..., \alpha_m}[E]$ denotará la función dada por:
+\begin{enumerate}
+    \item El dominio de $\lambda_{x_1, ..., x_n, \alpha_1, ..., \alpha_m}[E]$ es el conjunto de las $(n+m)$-uplas $(k_1, ..., k_n, \beta_1, ..., \beta_m)$ tales que $E$ está definida cuando le asignamos a cada valor $x_i$ el valor $k_i$ y a cada $\alpha_i$ el valor $\beta_i$.
+    \item $\lambda_{x_1, ..., x_n, \alpha_1, ..., \alpha_m}[E](k_1, ..., k_n, \beta_1, ..., \beta_m)$ = valor que asume o representa $E$ cuando le asignamos a cada $x_i$ el valor $k_i$ y a cada $\alpha_i$ el valor $\beta_i$.
+\end{enumerate}
+
+Notar que para $S \subseteq \omega^n \times \Sigma^{*m}$ se tiene que $\chi_S^{\omega^n \times \Sigma^{*m}} = \lambda_{x_1, ..., x_n, \alpha_1, ..., \alpha_m}[(\overrightarrow{x}, \overrightarrow{\alpha}) \in S]$.
 
 \end{flushleft}
 \end{document}
